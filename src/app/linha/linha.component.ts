@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription, interval } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { Subject, Subscription, interval } from 'rxjs';
 
 import { LinhaService } from './linha.service';
 
@@ -11,23 +11,40 @@ import { LinhaService } from './linha.service';
 export class LinhaComponent implements OnInit {
   [x: string]: any;
 
+  @Input("linha") iLinha:number = 0;
+  @Input("interval") iInterval:number = 0;
+
   columns: Array <any> = new Array();
   itemsTurno1: Array <any> = new Array();
   itemsTurno2: Array <any> = new Array();
   itemsTurno3: Array <any> = new Array();
+  
+  private readonly onDestroy = new Subject();
+  private updateSubscription?: Subscription;
 
   constructor (private linhaService: LinhaService) {}
-
-  private updateSubscription?: Subscription;
 
   ngOnInit(): void {
 
       this.columns = this.linhaService.getColumns ();
 
       // intervalo  
-      this.updateSubscription = interval(10000).subscribe((val) => this.getItemsTurno(109,1));
-      this.updateSubscription = interval(10000).subscribe((val) => this.getItemsTurno(109,2));
-      this.updateSubscription = interval(10000).subscribe((val) => this.getItemsTurno(109,3));
+      this.updateSubscription = interval(this.iInterval * 1000).subscribe(val => {
+          console.log("** Linha 1: ", this.iLinha);
+          console.log("** Interval 1: ", this.iInterval);
+          this.getItemsTurno(this.iLinha,1)
+        });
+
+      this.updateSubscription = interval(this.iInterval * 1000).subscribe(val => {
+        console.log("** Linha 2: ", this.iLinha);
+        console.log("** Interval 2: ", this.iInterval);
+          this.getItemsTurno(this.iLinha,2)
+      });
+      this.updateSubscription = interval(this.iInterval * 1000).subscribe(val => {
+        console.log("** Linha 3: ", this.iLinha);
+        console.log("** Interval 3: ", this.iInterval);
+        this.getItemsTurno(this.iLinha,3)
+      });
 
   }
 
@@ -40,6 +57,10 @@ export class LinhaComponent implements OnInit {
       else if (iTurno === 3)
         this.itemsTurno3 = response.items;
     });
+  }
+
+  ngOnDestroy() {
+    this.onDestroy.complete();
   }
 
 }

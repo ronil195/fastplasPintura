@@ -6,8 +6,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { PoModule } from '@po-ui/ng-components';
 
-import { LinhaModule } from './linha/linha.module';
+
 import { TokenInterceptor } from './auth/token.interceptor';
+import { ParamLinhaModule } from './param-linha/param-linha.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { TokenInterceptor } from './auth/token.interceptor';
     BrowserModule,
     PoModule,
     HttpClientModule,
-    LinhaModule
+    ParamLinhaModule,
+    AppRoutingModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -7,9 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ParamLinhaComponent {
 
-  public sLinha: string = "109";
-  public sInterval: string = "10";
-  poDialog: any;
+  public iLinha: number = 109;
+  public iInterval: number = 60;
 
   leaveInterval() {
     console.log("leave");
