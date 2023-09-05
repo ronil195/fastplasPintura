@@ -1,0 +1,7 @@
+<form #f="ngForm">
+    <div class="po-row">
+      <po-input class="po-md-6" name="linha" p-clean p-label="Linha Produção" p-required [(ngModel)]="sLinha"> </po-input>
+      <po-input class="po-md-6" name="intervalo" p-clean p-label="Intervalo em segundos" p-required [(ngModel)]="sInterval" (p-blur)="leaveInterval()"> </po-input>
+    </div>
+</form>
+  
