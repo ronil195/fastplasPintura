@@ -10,8 +10,4 @@ export class ParamLinhaComponent {
   public iLinha: number = 109;
   public iInterval: number = 60;
 
-  leaveInterval() {
-    console.log("leave");
-  }
-
 }

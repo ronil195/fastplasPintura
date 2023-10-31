@@ -1,12 +1,27 @@
-    <div class="pow-row">
+    <div class="po-row">
         <po-container class="po-md-4">
-            <po-table [p-items]="itemsTurno1" [p-columns]="columns" [p-hide-table-search]="true" [p-hide-columns-manager]="true"> </po-table>
+            <div class="po-row">
+                <h1>Turno 3</h1>
+            </div>
+            <div class="po-row">
+                <po-table [p-items]="itemsTurno3" [p-columns]="columns" [p-hide-table-search]="true" [p-hide-columns-manager]="true"> </po-table>
+            </div>
         </po-container>
         <po-container class="po-md-4">
-            <po-table [p-items]="itemsTurno2" [p-columns]="columns" [p-hide-table-search]="true" [p-hide-columns-manager]="true"> </po-table>
+            <div class="po-row">
+                <h1>Turno 1</h1>
+            </div>
+            <div class="po-row">
+                <po-table [p-items]="itemsTurno1" [p-columns]="columns" [p-hide-table-search]="true" [p-hide-columns-manager]="true"> </po-table>
+            </div>
         </po-container>
         <po-container class="po-md-4">
-            <po-table [p-items]="itemsTurno3" [p-columns]="columns" [p-hide-table-search]="true" [p-hide-columns-manager]="true"> </po-table>
+            <div class="po-row">
+                <h1>Turno 2</h1>
+            </div>
+            <div class="po-row">
+                <po-table [p-items]="itemsTurno2" [p-columns]="columns" [p-hide-table-search]="true" [p-hide-columns-manager]="true"> </po-table>
+            </div>
         </po-container>
     </div>
 
