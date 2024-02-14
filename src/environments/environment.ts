@@ -1,5 +1,5 @@
 export const environment = {
-    url:window.location.href,
+    url:'http://' + location.host + "/",
     usuario:"super",
     senha:"trabalho"
 };
